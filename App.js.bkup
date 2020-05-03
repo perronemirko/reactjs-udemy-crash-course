@@ -1,0 +1,113 @@
+import React from 'react';
+//import logo from './logo.svg';
+import './App.css';
+import {isArrayEmpty} from './Utils';
+import BlogCard from './BlogCard-component';
+
+
+function App() {
+
+  // const firstName = 'Mirko';
+  // const lastName = 'Perrone';
+  // const age = 33;
+  // const job ='Team principal';
+
+  //const fullname = (firstName, lastName)=> `${firstName} ${lastName}`;
+
+  //const inputPlaceholder = 'Enter your name';
+
+  //const detailedInputBox = <input placeholder={inputPlaceholder}></input>
+
+  //const myArr = [1,2,3,4,5]
+
+  // const myObj = {
+  //   firstName: 'Toto',
+  //   lastName: 'Cotugno',
+  //   popup:(name, lastName)=> {
+  //     alert(`ciao ${name} ${lastName}`);
+  //   }
+  // }
+
+
+  // const blogObj = {
+  //   title: "Blog object title",
+  //   description:'Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum '
+  // }
+
+  const blogArr = [
+    {
+      id: 1,
+      title: "Blog object title1",
+      description:'Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum '
+    },
+    {
+      id: 2,
+      title: "Blog object title2",
+      description:'Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum '
+    },
+    {
+      id: 3,
+      title: "Blog object title3",
+      description:'Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum '
+    },
+  ]
+
+  // const blogCardsOld = blogArr.map((e) => {
+  //   return (
+  //     <div className="BlogCard" key={e.id}>
+  //       <h3>
+  //         {e.title}
+  //       </h3>
+  //       <p>
+  //         {e.description}
+  //       </p>
+  //     </div>
+  //   )
+  // })
+
+
+  const blogCards = isArrayEmpty(blogArr) ? [] : blogArr.map((item, pos) => {
+    //console.log(pos);
+    return (
+      <BlogCard key={item.id} id={item.id} title={item.title} description={item.description}/>
+    )
+  })
+
+  const style = {
+      margin: '16px',
+      padding: '16px',
+      boxSizing: 'border-box',
+      borderRadius: '5px',
+      boxShadow: '0 2px 5px #ccc'
+    }
+
+
+  const onHideBtnClick = () => {
+    alert('');
+  }
+
+  return (
+    <div className="App">
+      <div style={style}>
+        <div>{blogCards}</div>
+        <button onClick={onHideBtnClick}>Hide List</button>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+    /*  { <div className="BlogCard"><header>{blogObj.title}</header>{blogObj.description}</div> } 
+
+      { <h3>Full name: {fullname(firstName, lastName)}</h3>
+      <p>Age: {`${age}`}</p>
+      <p>Job: {`${job}`}</p>
+      {detailedInputBox}
+      <br/><br/>{myArr[3]}
+      <br/><br/>{
+        myArr[3] > 0 ? "True" : "False" // Instead of using if statemnet
+      }
+      {  myArr.map(e => console.log(e))// instead of for loop
+      }
+      {myObj.popup(firstName, lastName)}
+      {myObj.lastName} */
